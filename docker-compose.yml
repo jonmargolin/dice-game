@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  # nestjs-app:
+  #   image: your-nestjs-image:latest  # Replace with the actual image for your NestJS application
+  #   ports:
+  #     - "3000:3000"  # Adjust the port mapping as needed
+  #   depends_on:
+  #     - redis-server
+  #   environment:
+  #     REDIS_HOST: redis-server
+
+  redis-server:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"  # Adjust the port mapping as needed
