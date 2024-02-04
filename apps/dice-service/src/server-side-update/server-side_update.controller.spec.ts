@@ -9,7 +9,9 @@ describe('ServerSideUpdateController', () => {
       controllers: [ServerSideUpdateController],
     }).compile();
 
-    controller = module.get<ServerSideUpdateController>(ServerSideUpdateController);
+    controller = module.get<ServerSideUpdateController>(
+      ServerSideUpdateController
+    );
   });
 
   it('should be defined', () => {

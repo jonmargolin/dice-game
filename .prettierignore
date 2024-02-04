@@ -2,3 +2,9 @@
 /dist
 /coverage
 /.nx/cache
+docker-compose-dev.yml
+docker-compose.yml
+jest.config.ts
+jest.preset.js
+README.md
+.eslintrc.json

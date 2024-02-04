@@ -8,24 +8,19 @@ import { RedisModuleWarper } from '../redis/redis.module';
 import { UserGameModule } from '../user-game/user-game.module';
 import { ServerSideUpdateModule } from '../server-side-update/server-side-update.module';
 
-
-
-
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-    autoSchemaFile: true,
-    driver: ApolloDriver,
-    context: ({ req, res }) => ({ req, res }),
-  }),
-  RedisModuleWarper,
-  UserGameModule,
-  ServerSideUpdateModule
-],
+      autoSchemaFile: true,
+      driver: ApolloDriver,
+      context: ({ req, res }) => ({ req, res }),
+    }),
+    RedisModuleWarper,
+    UserGameModule,
+    ServerSideUpdateModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
-

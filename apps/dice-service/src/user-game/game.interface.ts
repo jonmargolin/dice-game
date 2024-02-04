@@ -5,39 +5,38 @@ export interface RollDice {
   rollProbability: number;
   rollSum: number;
   roundNumber: number;
-  userId: string
+  userId: string;
   [key: string]: unknown;
 }
 @ObjectType()
-export  class RollResult implements RollDice{
-    [key: string]: unknown;
-    @Field(() => [Number])
-    rollList: Array<number>;
-  
-    @Field(() => Number)
-    rollProbability: number;
-  
-    @Field(() => Number)
-    rollSum: number;
-  
-    @Field(() => Number)
-    roundNumber: number;
-    
-    @Field(() => String)
-    userId: string;
+export class RollResult implements RollDice {
+  [key: string]: unknown;
+  @Field(() => [Number])
+  rollList: Array<number>;
 
-    constructor(
-        rollList: Array<number>,
-        rollProbability: number,
-        rollSum: number,
-        roundNumber: number,
-        userId: string
-      ) {
-        this.rollList = rollList;
-        this.rollProbability = rollProbability;
-        this.rollSum = rollSum;
-        this.roundNumber = roundNumber;
-        this.userId = userId
-      }
-    
+  @Field(() => Number)
+  rollProbability: number;
+
+  @Field(() => Number)
+  rollSum: number;
+
+  @Field(() => Number)
+  roundNumber: number;
+
+  @Field(() => String)
+  userId: string;
+
+  constructor(
+    rollList: Array<number>,
+    rollProbability: number,
+    rollSum: number,
+    roundNumber: number,
+    userId: string
+  ) {
+    this.rollList = rollList;
+    this.rollProbability = rollProbability;
+    this.rollSum = rollSum;
+    this.roundNumber = roundNumber;
+    this.userId = userId;
+  }
 }
