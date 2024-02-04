@@ -40,7 +40,7 @@ const GameLayout = () => {
             }
             else {
                 const {message}= data
-                message.sort((a, b) => {
+                message.sort((a: { rollSum: string; roundNumber: string; }, b: { rollSum: string; roundNumber: string; }) => {
                     const rollSumComparison = parseInt(b.rollSum) - parseInt(a.rollSum);
                   
                     // If rollSum is the same, compare by roundNumber

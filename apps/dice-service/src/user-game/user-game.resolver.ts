@@ -1,22 +1,20 @@
 import { Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { v4 as uuidv4 } from 'uuid';
-import { RedisService } from '../redis/redis.service';
 import { Logger } from '@nestjs/common';
 import { Response, Request } from 'express';
-import { GraphQLError } from 'graphql';
 import { GameService } from './game.service';
 import {RollResult } from './game.interface';
 import { CountDownService } from '../server-side-update/count-down/count-down.service';
 
 @Resolver()
 export class UserGameResolver {
-    constructor(private readonly redisService: RedisService, private readonly gameService: GameService, 
+    constructor(private readonly gameService: GameService, 
     private readonly countDownService: CountDownService)  {}
     @Mutation(() => Boolean)
     async startGame(@Context('res') res: Response): Promise<boolean> {
         const userId = uuidv4();
         try {
-            await this.redisService.setUserRound(userId.toString(), 0);
+            await this.gameService.setUserRound(userId)
             Logger.log(`user start game with id ${userId}`);
             res.cookie('user_dice_id', userId, { maxAge: 900000, path: '/'});
             return true;
@@ -51,10 +49,10 @@ export class UserGameResolver {
         if(!userId){
             return new Error("messing cookie")
          }
-        const isRoundEnd = await this.redisService.finesRound(userId);
+        const isRoundEnd = this.gameService.finesUserRound(userId);
         if(!isRoundEnd){
         this.countDownService.startCountdown();
-        await this.redisService.endRounds(userId)
+        await this.gameService.endRoundUser(userId)
         return true
         }
          return false

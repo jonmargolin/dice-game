@@ -15,7 +15,9 @@ services:
   
 
   nestjs-app:
-    image: "jonmargolin/dice-service:0.3"
+    build:
+      context: .
+      dockerfile: ./apps/dice-service/Dockerfile
     ports:
       - "3000:3000"
     depends_on:
@@ -27,7 +29,9 @@ services:
       REDIS_PORT: 6379
   
   nginx-react-app:
-    image: "jonmargolin/dice-app:0.1"
+    build:
+      context: .
+      dockerfile: ./apps/dice-app/Dockerfile
     ports:
       - "8080:80"
  

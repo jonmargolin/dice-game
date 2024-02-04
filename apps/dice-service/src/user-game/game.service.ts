@@ -101,4 +101,13 @@ export class GameService {
     public async logoutUser(userId:string):Promise<void>{
         await this.redisService.clearUserRound(userId)
     }
+    public async setUserRound(userId:string):Promise<void>{
+        await this.redisService.setUserRound(userId.toString(), 0);
+    }
+    public async finesUserRound(userId:string):Promise<boolean>{
+      return  await this.redisService.finesRound(userId);
+    }
+    public async endRoundUser(userId:string):Promise<void>{
+    await this.redisService.endRounds(userId)
+    }
 }

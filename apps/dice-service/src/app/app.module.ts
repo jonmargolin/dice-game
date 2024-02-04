@@ -1,12 +1,13 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
-import { RedisModule } from '../redis/redis.module';
+import { RedisModuleWarper } from '../redis/redis.module';
 import { UserGameModule } from '../user-game/user-game.module';
 import { ServerSideUpdateModule } from '../server-side-update/server-side-update.module';
+
 
 
 
@@ -19,10 +20,9 @@ import { ServerSideUpdateModule } from '../server-side-update/server-side-update
     driver: ApolloDriver,
     context: ({ req, res }) => ({ req, res }),
   }),
-  RedisModule,
+  RedisModuleWarper,
   UserGameModule,
   ServerSideUpdateModule
-  
 ],
   controllers: [AppController],
   providers: [AppService],

@@ -14,9 +14,10 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   app.use(cookieParser())
   app.enableCors({
-    origin: 'http://localhost:4200', // replace with your frontend app URL
+    origin: 'http://localhost:8080', // replace with your frontend app URL
     credentials: true, // allow cookies with credentials
   });
+  app.enableShutdownHooks();
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }

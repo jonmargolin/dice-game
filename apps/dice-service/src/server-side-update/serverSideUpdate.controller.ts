@@ -7,6 +7,7 @@ import { Logger } from '@nestjs/common';
 export class ServerSideUpdateController {
     constructor( private readonly countDownService: CountDownService){}
     @Sse('gameUpdates')
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gameUpdates(@Req() req: any): Observable<MessageEvent> {
       Logger.log('conection');
       const  userId = req.cookies['user_dice_id'];

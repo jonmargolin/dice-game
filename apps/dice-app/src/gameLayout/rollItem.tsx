@@ -3,7 +3,7 @@ export type RollItemProps ={
     sum: number,
     probability: number
     rollNumber: number
-    rollArray: number
+    rollArray: number[]
 }
 const RollItem = ({sum, probability, rollNumber, rollArray}:RollItemProps) => {
     return (

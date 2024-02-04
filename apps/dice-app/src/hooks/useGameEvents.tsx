@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { url } from '../api/config';
-import { error } from 'console';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -18,7 +17,7 @@ const useGameEvents = ( onMessage: EventListener) => {
     // Attach the event listener for messages
     eventSourceRef.current.addEventListener('message', onMessage);
     
-    eventSourceRef.current.onerror =(error) => {
+    eventSourceRef.current.onerror =() => {
 
         if(eventSourceRef.current){
         eventSourceRef.current.close();

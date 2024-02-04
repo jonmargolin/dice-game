@@ -5,7 +5,7 @@ import { RedisRepositoryInterface } from './redis.repository.interface';
 @Injectable()
 export class RedisRepository implements OnModuleDestroy, RedisRepositoryInterface {
     constructor(@Inject('RedisClient') private readonly redisClient: Redis) {
-        this.redisClient = new Redis(); 
+    
     }
     getClient()  {
         return this.redisClient.multi()

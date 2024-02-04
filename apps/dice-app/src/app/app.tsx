@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GameContextProvider } from '../gameContext/gameContext';
-import styles from './app.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -25,7 +24,8 @@ export function App() {
       },
       mutations: {
         // Global options for mutations
-        onError: (error) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onError: (error:any) => {
           const msg =error.response?.errors[0]?.message
           if(msg === COOKE_ERROR){
            navigate("/")
